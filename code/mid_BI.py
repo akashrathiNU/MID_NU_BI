@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-MID_BD2.py
+MID_BI.py
 
 Monetary incentive delay task with valences for reward/loss and a neutral
 condition, for 6 total trial types.
@@ -13,12 +13,8 @@ To change run length would require regenerating new order files.
 
 Based on code originally written by @nivreggev, see README; Modified by Haroon Popal (hspopal on GitHub)
 Last modified by Nina Kougan (ninakougan@u.northwestern.edu) on 04/08/25
+Last modified by Akash Rathi (akash@u.northwestern.edu) on 12/22/25
 
-***NOTES FROM NINA FOR BERKELEY TESTING***
-To change number of trials, see line 59 and 585
-To change ITI values, see line 72 (equation needs to = number of trials per run)
-To change button box inputs, see lines 87-95
-To change # of trials during MRT, see line 575
 
 """
 
@@ -87,12 +83,12 @@ num_reruns = 0
 
 
 # Accepted inputs
-forwardKeys = ['1','6']
+forwardKeys = ['1']
 backKey = '2'
 startKeys = ['enter','return']
 fMRI_trigger = ['5']  # This is the fMRI trigger button that starts the task
 ttlKey = "5"
-expKeys = ['1','2','6','escape', 'esc']
+expKeys = ['1','2','escape', 'esc']
 escapeKeys = ['escape', 'esc']
 rerun_MRT = 'r'
 end_MRT_Keys = startKeys + [rerun_MRT]
@@ -382,13 +378,13 @@ endf = visual.TextStim(win, pos=[0, 0], text="Thank you. You are done with this 
 # Initialize components for Routine "cue"
 cues = {
     'reward.low':  visual.ImageStim(win, size=0.3, 
-                                    image=stim_dir+"reward_low_125.png"),
+                                    image=stim_dir+"reward_low.png"),
     'reward.high': visual.ImageStim(win, size=0.3, 
                                     image=stim_dir+"reward_high.png"),
     'reward.neut': visual.ImageStim(win, size=0.3, 
                                     image=stim_dir+"reward_neut.png"),
     'loss.low':    visual.ImageStim(win, size=0.3, 
-                                    image=stim_dir+"loss_low_125.png"),
+                                    image=stim_dir+"loss_low.png"),
     'loss.high':   visual.ImageStim(win, size=0.3, 
                                     image=stim_dir+"loss_high.png"),
     'loss.neut':   visual.ImageStim(win, size=0.3, 
@@ -849,7 +845,7 @@ while run < num_runs:
             reward = 5.0
             exp.addData('trial.reward', reward)
         elif trial_type == 'reward.low' and trial_response == 1:
-            reward = 1.25
+            reward = 1.50
             exp.addData('trial.reward', reward)
         elif trial_type == 'reward.neut' and trial_response == 1:
             reward = 0.0
@@ -858,7 +854,7 @@ while run < num_runs:
             reward = -5.0
             exp.addData('trial.reward', reward)
         elif trial_type == 'loss.low' and not trial_response == 1:
-            reward = -1.25
+            reward = -1.50
             exp.addData('trial.reward', reward)
         elif trial_type == 'loss.neut' and not trial_response == 1:
             reward = 0.0
