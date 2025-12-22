@@ -1,5 +1,4 @@
-# MID for BD2 Protocol
-# Last Updated 04/23/25 by Nina Kougan (ninakougan@u.northwestern.edu)
+# MID for Basic Income Protocol
 
 ## Basic Info
 
