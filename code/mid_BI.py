@@ -82,17 +82,6 @@ total_earnings_goal = 40
 num_reruns = 0
 
 
-# Accepted inputs
-forwardKeys = ['1']
-backKey = '2'
-startKeys = ['enter','return']
-fMRI_trigger = ['5']  # This is the fMRI trigger button that starts the task
-ttlKey = "5"
-expKeys = ['1','2','escape', 'esc']
-escapeKeys = ['escape', 'esc']
-rerun_MRT = 'r'
-end_MRT_Keys = startKeys + [rerun_MRT]
-
 
 # Start set up of the experiment
 
@@ -110,7 +99,9 @@ expInfo = {
     'fMRI reverse screen? (yes or no)': 'no',
     'start run (0-2)': '0',
     'task screen': '2',
+    'handedness':'right'
 }
+
 dlg = gui.DlgFromDict(dictionary=expInfo, title=expName)
 if dlg.OK == False:
     core.quit()  # user pressed cancel
@@ -119,6 +110,29 @@ expInfo['expName'] = expName
 sn = int(expInfo['participant'])
 session = int(expInfo['session'])
 task_screen = int(expInfo['task screen'])
+
+# Accepted inputs
+if expInfo['handedness'] == 'right':
+    forwardKeys = ['1']
+    backKey = '2'
+    startKeys = ['enter','return']
+    fMRI_trigger = ['5']  # This is the fMRI trigger button that starts the task
+    ttlKey = "5"
+    expKeys = ['1','2','escape', 'esc']
+    escapeKeys = ['escape', 'esc']
+    rerun_MRT = 'r'
+    end_MRT_Keys = startKeys + [rerun_MRT]
+elif expInfo['handedness'] == 'left':
+    forwardKeys = ['4']
+    backKey = '3'
+    startKeys = ['enter','return']
+    fMRI_trigger = ['5']  # This is the fMRI trigger button that starts the task
+    ttlKey = "5"
+    expKeys = ['4','3','escape', 'esc']
+    escapeKeys = ['escape', 'esc']
+    rerun_MRT = 'r'
+    end_MRT_Keys = startKeys + [rerun_MRT]
+
 
 # Check for various experimental handles
 if expInfo['fMRI? (yes or no)'].lower() == 'yes':
