@@ -426,11 +426,11 @@ exp_feedback = visual.TextStim(win=win, name='exp_feedback',
                                colorSpace='rgb', opacity=1, 
                                flipHoriz=flipHoriz);
 
-breakPrompt = visual.TextStim(win, text="Take a break. When you are ready to continue, press the pointer button.", 
+breakPrompt = visual.TextStim(win, text="Take a break and please stay still until the scan is complete.\nThe experimenter will start the second round of the money game in a few minutes.", 
                               height=fontH, color=text_color, pos=(0,0), 
                               flipHoriz=flipHoriz)
                               
-waitForStructPrompt = visual.TextStim(win, text="Thank you! The experimenter will start the money game in a few minutes after this scan is completed.", 
+waitForStructPrompt = visual.TextStim(win, text="Thank you! The experimenter will start the money game soon.", 
                               height=fontH, color=text_color, pos=(0,0), 
                               flipHoriz=flipHoriz)
 
@@ -1045,8 +1045,8 @@ while run < num_runs:
         # If we are still going and NOT on the last run, show the break messages
         breakPrompt.draw()
         win.flip()
-        #keyboard.waitForKeys(keys=forwardKeys, etype=keyboard.KEY_PRESS)
-        core.wait(10)
+        keyboard.waitForKeys(keys=startKeys, etype=keyboard.KEY_PRESS)
+        
     else:
         # We are on the last run
         show_stim(None, closing_duration)
